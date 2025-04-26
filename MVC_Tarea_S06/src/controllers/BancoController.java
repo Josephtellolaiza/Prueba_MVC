@@ -2,9 +2,7 @@ package controllers;
 
 import core.Controller;
 import core.View;
-import models.CuentaAhorro;
-import models.CuentaFactory;
-import models.DefaultCuentaFactory;
+import models.*;
 import views.BancoGUI;
 
 import java.io.BufferedWriter;
@@ -12,15 +10,32 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class BancoController extends Controller {
-    private CuentaFactory cuentaFactory;
     private View bancoView;
 
-    public BancoController(CuentaFactory cuentaFactory) {
-        this.cuentaFactory = cuentaFactory;
+    public BancoController() {
+        // Ahora no necesitamos una fábrica general
+    }
+
+    private CuentaFactory getFactory(String tipoCuenta) {
+        switch (tipoCuenta) {
+            case "Ahorro Sueldo":
+                return new AhorroSueldoFactory();
+            case "Ahorro Digital":
+                return new AhorroDigitalFactory();
+            case "Ahorro Mancomunada":
+                return new AhorroMancomunadaFactory();
+            case "Plazo Fijo":
+                return new PlazoFijoFactory();
+            case "Cuenta para Menores":
+                return new CuentaMenoresFactory();
+            default:
+                throw new IllegalArgumentException("Tipo de cuenta desconocido: " + tipoCuenta);
+        }
     }
 
     public CuentaAhorro crearCuenta(String tipoCuenta, double montoInicial) {
-        CuentaAhorro cuenta = cuentaFactory.crearCuenta(tipoCuenta, montoInicial);
+        CuentaFactory factory = getFactory(tipoCuenta);
+        CuentaAhorro cuenta = factory.crearCuenta(tipoCuenta, montoInicial);
         guardarCuentaEnArchivo(cuenta);
         return cuenta;
     }

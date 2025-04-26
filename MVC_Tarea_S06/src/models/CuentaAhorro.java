@@ -2,44 +2,83 @@ package models;
 
 public class CuentaAhorro {
     private String tipo;
-    private double tasaInteres;
     private double monto;
+    private double tasaInteres;
+    private int cantidadTitulares;
     private boolean pagaMantenimiento;
     private int retirosPermitidosATM;
-    private boolean requiereTutor; // solo para "Cuenta Menores"
-    private int cantidadTitulares;
+    private boolean requiereTutor;
     private int plazoMeses;
 
-    public CuentaAhorro(String tipo, double tasaInteres, double monto,
-                        boolean pagaMantenimiento, int retirosPermitidosATM,
-                        boolean requiereTutor, int cantidadTitulares, int plazoMeses) {
+    // Constructor
+    public CuentaAhorro(String tipo, double monto) {
         this.tipo = tipo;
-        this.tasaInteres = tasaInteres;
         this.monto = monto;
-        this.pagaMantenimiento = pagaMantenimiento;
-        this.retirosPermitidosATM = retirosPermitidosATM;
-        this.requiereTutor = requiereTutor;
-        this.cantidadTitulares = cantidadTitulares;
-        this.plazoMeses = plazoMeses;
     }
 
     // Getters
-    public String getTipo() { return tipo; }
-    public double getTasaInteres() { return tasaInteres; }
-    public double getMonto() { return monto; }
+    public String getTipo() {
+        return tipo;
+    }
 
-    public boolean isPagaMantenimiento() { return pagaMantenimiento; }
+    public double getMonto() {
+        return monto;
+    }
 
-    public int getRetirosPermitidosATM() { return retirosPermitidosATM; }
+    public double getTasaInteres() {
+        return tasaInteres;
+    }
 
-    public boolean isRequiereTutor() { return requiereTutor; }
-    
-    public int getCantidadTitulares() { return cantidadTitulares; }
-    public int getPlazoMeses() { return plazoMeses; }
+    public int getCantidadTitulares() {
+        return cantidadTitulares;
+    }
 
-    @Override
-    public String toString() {
-        return tipo + ";" + tasaInteres + ";" + monto + ";" + pagaMantenimiento + ";" +
-                retirosPermitidosATM + ";" + requiereTutor + ";" + cantidadTitulares + ";" + plazoMeses;
+    public boolean isPagaMantenimiento() {
+        return pagaMantenimiento;
+    }
+
+    public int getRetirosPermitidosATM() {
+        return retirosPermitidosATM;
+    }
+
+    public boolean isRequiereTutor() {
+        return requiereTutor;
+    }
+
+    public int getPlazoMeses() {
+        return plazoMeses;
+    }
+
+    // Setters
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public void setTasaInteres(double tasaInteres) {
+        this.tasaInteres = tasaInteres;
+    }
+
+    public void setCantidadTitulares(int cantidadTitulares) {
+        this.cantidadTitulares = cantidadTitulares;
+    }
+
+    public void setPagaMantenimiento(boolean pagaMantenimiento) {
+        this.pagaMantenimiento = pagaMantenimiento;
+    }
+
+    public void setRetirosPermitidosATM(int retirosPermitidosATM) {
+        this.retirosPermitidosATM = retirosPermitidosATM;
+    }
+
+    public void setRequiereTutor(boolean requiereTutor) {
+        this.requiereTutor = requiereTutor;
+    }
+
+    public void setPlazoMeses(int plazoMeses) {
+        this.plazoMeses = plazoMeses;
     }
 }
