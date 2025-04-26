@@ -1,0 +1,9 @@
+Cuenta para Menores;1.0;100.0;false;0;true;1;0
+Cuenta para Menores;1.0;100.0;false;0;true;1;0
+Ahorro Digital;3.0;100.0;true;3;false;1;0
+Ahorro Sueldo;2.5;100.0;false;5;false;1;0
+Ahorro Sueldo;2.5;56.0;false;5;false;1;0
+Plazo Fijo;6.0;56.0;false;0;false;1;6
+Ahorro Sueldo;2.5;100.0;false;5;false;1;0
+Ahorro Sueldo;2.5;100.0;false;5;false;1;0
+Ahorro Mancomunada;4.0;100.0;false;5;false;2;0
