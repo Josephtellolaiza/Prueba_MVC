@@ -1,7 +1,8 @@
 package views;
 
 import controllers.BancoController;
-import models.DefaultCuentaFactory;
+import core.Model;
+import core.View;
 import models.CuentaAhorro;
 
 import javax.swing.*;
@@ -9,18 +10,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BancoGUI extends JFrame {
+public class BancoGUI extends JPanel implements View {
     private JComboBox<String> tipoCuentaCombo;
     private JTextField montoField;
     private JTextArea detallesArea;
     private BancoController controller;
 
-    public BancoGUI() {
-        controller = new BancoController(new DefaultCuentaFactory());
-        setTitle("Sistema Bancario");
-        setSize(450, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null); // CAMBIO aquí para usar posiciones absolutas
+    
+
+    public BancoGUI(BancoController controller) {
+        this.controller = controller;
+        setLayout(null);
+        setPreferredSize(new Dimension(450, 350));
 
         make_labels();
         make_comboBox();
@@ -39,7 +40,7 @@ public class BancoGUI extends JFrame {
         lbMonto.setBounds(20, 60, 150, 30);
         add(lbMonto);
 
-        montoField = new JTextField("100.00"); // USAMOS el atributo global
+        montoField = new JTextField("100.00");
         montoField.setFont(new Font("Arial", Font.PLAIN, 16));
         montoField.setBounds(180, 60, 200, 30);
         add(montoField);
@@ -47,7 +48,7 @@ public class BancoGUI extends JFrame {
 
     private void make_comboBox() {
         tipoCuentaCombo = new JComboBox<>(new String[]{
-                "Ahorro Sueldo", "Ahorro Digital", "Ahorro Mancomunada", "Plazo Fijo", "Cuenta para Menores"
+            "Ahorro Sueldo", "Ahorro Digital", "Ahorro Mancomunada", "Plazo Fijo", "Cuenta para Menores"
         });
         tipoCuentaCombo.setFont(new Font("Arial", Font.PLAIN, 16));
         tipoCuentaCombo.setBounds(180, 20, 200, 30);
@@ -64,12 +65,10 @@ public class BancoGUI extends JFrame {
     }
 
     private void make_textArea() {
-        detallesArea = new JTextArea(); // USAMOS el atributo global
+        detallesArea = new JTextArea();
         detallesArea.setEditable(false);
-        detallesArea.setFont(new Font("Arial", Font.PLAIN, 14));
-
         JScrollPane scrollPane = new JScrollPane(detallesArea);
-        scrollPane.setBounds(20, 140, 400, 200);
+        scrollPane.setBounds(20, 140, 400, 150);
         add(scrollPane);
     }
 
@@ -107,5 +106,10 @@ public class BancoGUI extends JFrame {
             detalles.append("Plazo: ").append(cuenta.getPlazoMeses()).append(" meses\n");
         }
         detallesArea.setText(detalles.toString());
+    }
+
+    @Override
+    public void update(Model model, Object data) {
+        // Aquí podrías actualizar automáticamente si tuvieras cambios desde el modelo
     }
 }

@@ -7,3 +7,5 @@ Plazo Fijo;6.0;56.0;false;0;false;1;6
 Ahorro Sueldo;2.5;100.0;false;5;false;1;0
 Ahorro Sueldo;2.5;100.0;false;5;false;1;0
 Ahorro Mancomunada;4.0;100.0;false;5;false;2;0
+Ahorro Sueldo,100.0,2.5,1,No,5,No,0
+Ahorro Mancomunada,100.0,4.0,2,No,5,No,0

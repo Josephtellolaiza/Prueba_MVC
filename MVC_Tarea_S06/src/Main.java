@@ -1,17 +1,15 @@
 
-import javax.swing.SwingUtilities;
 
+import controllers.BancoController;
+import models.DefaultCuentaFactory;
 
-import views.BancoGUI;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(() -> {
-            BancoGUI gui = new BancoGUI();
-            gui.setVisible(true);
-        });
+        BancoController bancoController = new BancoController(new DefaultCuentaFactory());
+        bancoController.run();
     }
 }
